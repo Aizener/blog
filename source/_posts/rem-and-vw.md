@@ -7,7 +7,7 @@ tags:
 	- JavaScript
 categories:
 	- Web前端
-cover: https://s1.ax1x.com/2020/05/19/YIeGNT.jpg
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg9.jpg
 ---
 
 > Web前端的开发中，PC端需要适配各种浏览器，异常繁琐。而移动端浏览器因为基本都是基于`webkit`内核的，所以不需要兼容，但是也有个问题，就是手机机型大小不同，所以移动端就需要处理一定的适配问题。

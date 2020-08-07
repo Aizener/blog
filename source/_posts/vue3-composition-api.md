@@ -5,7 +5,8 @@ date: 2020-08-06 22:59:21
 tags:
 	- Vue
 categories:
-	- Web前端浅尝
+  - Web前端
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg11.jpg
 ---
 
 >Vue3.0于Vue2.0的基础上，改变还是比较多的，新增了Composition API让Vue的写法变得与以往不同，虽然现在还没有正式发布。但已经发不了@vue/composition-api和vue-next作为预热，因此可以先得一窥探，品尝一番。

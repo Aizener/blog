@@ -5,9 +5,8 @@ tags:
 	- JavaScript
 	- Node
 categories:
-	- Web前端
     - 服务端
-cover: https://s1.ax1x.com/2020/05/19/YIen3Q.jpg
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg10.jpg
 ---
 
 > Socket.io是一个[WebSocket](https://www.w3cschool.cn/websocket_protocol/)库，包括了客户端的js和服务器端的[nodejs](https://www.w3cschool.cn/nodejs/)，它的目标是构建可以在不同浏览器和移动设备上使用的实时应用。它会自动根据浏览器从WebSocket、[AJAX](https://www.w3cschool.cn/ajax/)长轮询、Iframe流等等各种方式中选择最佳的方式来实现网络实时应用，非常方便和人性化，而且支持的浏览器最低达IE5.5。

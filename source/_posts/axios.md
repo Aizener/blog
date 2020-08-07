@@ -2,11 +2,11 @@
 title: '浅谈Axios的使用与封装'
 date: 2020-04-26 18:52:52
 tags:
-	- axios
+	- Axios
 	- Vue
 categories:
   - Web前端
-cover: https://s1.ax1x.com/2020/05/19/YIeGNT.jpg
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg0.jpg
 ---
 
 > Axios是一款基于Promise的HTTP库，可在nodejs或浏览器端使用，并且是现在项目中大量使用的请求库，使用起来也非常简单明了。

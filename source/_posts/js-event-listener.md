@@ -5,7 +5,7 @@ tags:
 	- JavaScript
 categories:
     - Web前端
-cover: https://s1.ax1x.com/2020/05/19/YIeVN8.png
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg5.jpg
 ---
 
 > 简介： JavaScript的二级DOM监听事件EventListener很好用，比起一级事件来感觉更好使用，但其实其中也略有一些坑，今天我们就来研究一下此中秘密。

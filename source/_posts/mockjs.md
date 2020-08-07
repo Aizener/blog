@@ -6,7 +6,7 @@ tags:
 	- Axios
 categories:
   - Web前端
-cover: https://s1.ax1x.com/2020/05/19/YIe9cd.jpg
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg6.jpg
 ---
 
 > 在前后端分离的开发中，大家都是同时开发的，往往后端的数据接口不会立即就写出来，此时，就需要我们来本地模拟一些数据来渲染页面，`Mockjs`就是很好的一个工具。

@@ -7,7 +7,7 @@ tags:
 	- Node
 categories:
 	- Web前端
-	- 服务端
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/webpack.jpg
 ---
 
 > Webpack是一个基于Node.js的前端构建工具。

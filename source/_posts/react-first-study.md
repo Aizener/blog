@@ -5,7 +5,8 @@ date: 2020-08-06 23:02:24
 tags:
 	- React
 categories:
-	- Web前端
+   - Web前端
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg7.jpg
 ---
 
 > React 是一个用于构建用户界面的 JavaScript 库。你可以在[官方首页](https://react.docschina.org/)或[官方教程](https://react.docschina.org/tutorial/tutorial.html)中学习什么是 React。当前，React的生态可谓是前端里面最庞大的了，其使用量也遍布全球，所以，很有必要了解一下这个十分优秀的框架。

@@ -7,7 +7,7 @@ tags:
 	- Node
 categories:
   - 服务端
-cover: https://s1.ax1x.com/2020/05/19/YIeZ4S.png
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/node.jpg
 ---
 
 > Express是基于Node的一个Web应用程序框架。

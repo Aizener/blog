@@ -8,7 +8,7 @@ tags:
 	- Nginx
 categories:
   - Web前端
-cover: https://s1.ax1x.com/2020/05/19/YIen3Q.jpg
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg1.jpg
 ---
 
 > 因为SPA单页应用的广泛使用，现在都流行前后端分离，各自开发，让每个程序员专注自己的事情，但是因此也会产生一些问题，比如说非常常见的：跨域问题。

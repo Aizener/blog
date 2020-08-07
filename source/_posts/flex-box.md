@@ -4,7 +4,8 @@ date: 2020-06-15 11:31:37
 tags:
 	- CSS3
 categories:
-	- Web前端
+    - Web前端
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg4.jpg
 ---
 
 > [弹性布局](http://caibaojian.com/t/弹性布局)（flexible box）模块（目前是w3c候选的推荐）旨在提供一个更加有效的方式来布置，对齐和分布在容器之间的各项内容，即使它们的大小是未知或者动态变化的。

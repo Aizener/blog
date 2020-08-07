@@ -5,7 +5,8 @@ date: 2020-06-19 16:14:15
 tags:
 	- JavaScript
 categories:
-	- Web前端
+    - Web前端
+cover: https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg2.jpg
 ---
 
 > JavaScript最大的一个特点就是：异步。那么，JavaScript是怎么实现异步编程的呢，那这就不得不说道**事件循环**，这里我简单的说一下我所理解的JavaScript的事件循环机制。

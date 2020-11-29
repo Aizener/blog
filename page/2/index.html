@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>部落格 - 这是杨祥的个人博客，用于记录学习及生活(✺ω✺)。</title><meta name="description" content="花有重开日，人无再少年"><meta name="author" content="杨祥"><meta name="copyright" content="杨祥"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="部落格"><meta name="twitter:description" content="花有重开日，人无再少年"><meta name="twitter:image" content="http://yangxiang.xyz:9002/img/avatar.png"><meta property="og:type" content="website"><meta property="og:title" content="部落格"><meta property="og:url" content="http://yangxiang.xyz:9002/page/2/"><meta property="og:site_name" content="部落格"><meta property="og:description" content="花有重开日，人无再少年"><meta property="og:image" content="http://yangxiang.xyz:9002/img/avatar.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yangxiang.xyz:9002/page/2/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isSidebar: false  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><script>console.log('%cHello, i\' am YangXiang.%cTheme By Butterfly.','background: #000; color: #fff; padding: 10px 20px; border-radius: 10px', 'color:skyblue;background: #000;padding: 10px 20px; border-radius: 10px')</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">13</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐分享</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 我的观影</span></a></li></ul></div></div></div></div><div id="body-wrap"><div class="full_page" id="nav" style="background-image: url(/img/index.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">部落格</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐分享</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 我的观影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="site-info"><h1 id="site_title">部落格</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Aizener" target="_blank" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:1215627787@qq.com" target="_blank" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></div></div><div id="scroll_down"><i class="fa fa-angle-down scroll-down-effects"></i></div></div><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/04/27/rem-and-vw/" title="说一下移动端的适配问题">     <img class="post_bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="说一下移动端的适配问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/27/rem-and-vw/" title="说一下移动端的适配问题">说一下移动端的适配问题</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-04-27 23:27:42"><i class="fa fa-calendar" aria-hidden="true"></i>2020-04-27</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="content">
+Web前端的开发中，PC端需要适配各种浏览器，异常繁琐。而移动端浏览器因为基本都是基于webkit内核的，所以不需要兼容，但是也有个问题，就是手机机型大小不同，所以移动端就需要处理一定的适配问题。
+
+方式适配问题的话，我这里简单举例两种：
+
+rem布局：因为rem的大小是通过浏览器的根字体来决定值 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/04/27/mockjs/" title="使用Mockjs来模拟数据">     <img class="post_bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Mockjs来模拟数据"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/27/mockjs/" title="使用Mockjs来模拟数据">使用Mockjs来模拟数据</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-04-27 12:37:18"><i class="fa fa-calendar" aria-hidden="true"></i>2020-04-27</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="content">
+在前后端分离的开发中，大家都是同时开发的，往往后端的数据接口不会立即就写出来，此时，就需要我们来本地模拟一些数据来渲染页面，Mockjs就是很好的一个工具。
+
+安装npm:
+1npm install mockjs --save-dev
+
+yarn:
+1yarn add mockjs --dev
+
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/04/26/cross-domain/" title="简单说一下跨域问题以及解决方案">     <img class="post_bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单说一下跨域问题以及解决方案"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/26/cross-domain/" title="简单说一下跨域问题以及解决方案">简单说一下跨域问题以及解决方案</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-04-26 23:16:55"><i class="fa fa-calendar" aria-hidden="true"></i>2020-04-26</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="content">
+因为SPA单页应用的广泛使用，现在都流行前后端分离，各自开发，让每个程序员专注自己的事情，但是因此也会产生一些问题，比如说非常常见的：跨域问题。
+
+跨域先来说下什么是跨域：
+出于浏览器的同源策略限制。同源策略（Sameoriginpolicy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/04/26/axios/" title="浅谈Axios的使用与封装">     <img class="post_bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅谈Axios的使用与封装"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/26/axios/" title="浅谈Axios的使用与封装">浅谈Axios的使用与封装</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-04-26 18:52:52"><i class="fa fa-calendar" aria-hidden="true"></i>2020-04-26</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="content">
+Axios是一款基于Promise的HTTP库，可在nodejs或浏览器端使用，并且是现在项目中大量使用的请求库，使用起来也非常简单明了。
+
+安装
+npm
+npm intall axios --save
+
+yarn
+yarn add axios
+
+
+请求下面是官方的例子：
+123456789101 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/04/25/js-event-listener/" title="关于通过addEventListener和removeEventListener简述">     <img class="post_bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于通过addEventListener和removeEventListener简述"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/04/25/js-event-listener/" title="关于通过addEventListener和removeEventListener简述">关于通过addEventListener和removeEventListener简述</a><div class="article-meta-wrap"><time class="post-meta__date" title="发表于 2020-04-25 13:44:14"><i class="fa fa-calendar" aria-hidden="true"></i>2020-04-25</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="content">
+简介： JavaScript的二级DOM监听事件EventListener很好用，比起一级事件来感觉更好使用，但其实其中也略有一些坑，今天我们就来研究一下此中秘密。
+
+定义和用法addEventListener() 方法用于向指定元素添加事件句柄, 与onclick这类事件相比较的特点是可多次添加 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">杨祥</div><div class="author-info__description">花有重开日，人无再少年</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">15</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">13</div></a></div><div class="card-info-data-item is-center">     <a href="/categories"><div class="headline">分类</div><div class="length_num">2</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Aizener" target="_blank" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:1215627787@qq.com" target="_blank" title="Email"><i class="fa fa-envelope" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">感谢访问本站，若喜欢请收藏 ^_^</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2020/11/29/uni-app%E5%9C%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8C%E8%8E%B7%E5%8F%96%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1571133783,549860555&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="uni-app在小程序里获取地理位置" alt="uni-app在小程序里获取地理位置"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/11/29/uni-app%E5%9C%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%87%8C%E8%8E%B7%E5%8F%96%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE/" title="uni-app在小程序里获取地理位置">uni-app在小程序里获取地理位置</div><time class="aside-post_meta post-meta__date" title="发表于 2020-11-29 19:53:17">2020-11-29</time></div></a></div><div class="aside-recent-post"><a href="/2020/11/29/%E6%9C%80%E6%96%B0%E4%BD%BF%E7%94%A8Uni-App%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/post.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="最新使用uni-app的一些感受" alt="最新使用uni-app的一些感受"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/11/29/%E6%9C%80%E6%96%B0%E4%BD%BF%E7%94%A8Uni-App%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E5%8F%97/" title="最新使用uni-app的一些感受">最新使用uni-app的一些感受</div><time class="aside-post_meta post-meta__date" title="发表于 2020-11-29 19:41:09">2020-11-29</time></div></a></div><div class="aside-recent-post"><a href="/2020/11/29/hello-world/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/post.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Hello World" alt="Hello World"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/11/29/hello-world/" title="Hello World">Hello World</div><time class="aside-post_meta post-meta__date" title="发表于 2020-11-29 18:26:06">2020-11-29</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/07/webpack-article/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/webpack.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="Webpack知识概览" alt="Webpack知识概览"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/07/webpack-article/" title="Webpack知识概览">Webpack知识概览</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-07 19:48:00">2020-08-07</time></div></a></div><div class="aside-recent-post"><a href="/2020/08/06/react-first-study/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/bg7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" title="初窥React基础知识" alt="初窥React基础知识"/></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/08/06/react-first-study/" title="初窥React基础知识">初窥React基础知识</div><time class="aside-post_meta post-meta__date" title="发表于 2020-08-06 23:02:24">2020-08-06</time></div></a></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fa fa-folder-open" aria-hidden="true"></i><span>分类</span></div><ul class="aside-category-item">       <li class="aside-category-list"><a class="aside-category-list_link" href="/categories/Web%E5%89%8D%E7%AB%AF/"><span class="aside-category-list_name">Web前端</span><span class="aside-category-list_length">12</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/"><span class="aside-category-list_name">服务端</span><span class="aside-category-list_length">2</span></a></li></ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/App/" style="font-size: 16px; color: #999">App</a> <a href="/tags/Axios/" style="font-size: 19.2px; color: #999fa8">Axios</a> <a href="/tags/CSS/" style="font-size: 16px; color: #999">CSS</a> <a href="/tags/CSS3/" style="font-size: 16px; color: #999">CSS3</a> <a href="/tags/HTML/" style="font-size: 16px; color: #999">HTML</a> <a href="/tags/JavaScript/" style="font-size: 24px; color: #99a9bf">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 16px; color: #999">Nginx</a> <a href="/tags/Node/" style="font-size: 20.8px; color: #99a3b0">Node</a> <a href="/tags/React/" style="font-size: 16px; color: #999">React</a> <a href="/tags/Vue/" style="font-size: 22.4px; color: #99a6b7">Vue</a> <a href="/tags/Webpack/" style="font-size: 16px; color: #999">Webpack</a> <a href="/tags/uni-app/" style="font-size: 17.6px; color: #999ca1">uni-app</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 17.6px; color: #999ca1">小程序</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/"><span class="archive-list-date">2020年11月</span><span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/"><span class="archive-list-date">2020年08月</span><span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/"><span class="archive-list-date">2020年06月</span><span class="archive-list-count">3</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/"><span class="archive-list-date">2020年05月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/"><span class="archive-list-date">2020年04月</span><span class="archive-list-count">5</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">15</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="4/23/2020 17:00:00">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 杨祥</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var subtitleEffect = true
+if (subtitleEffect){ 
+  var typed = new Typed("#subtitle", {
+    strings: '花有重开日&#44;人无再少年,Flowers can bloom again but people can\'t go back to their young age.'.split(","),
+    startDelay: 300,
+    typeSpeed: 150,
+    loop: false,
+    backSpeed: 50
+  })
+}else{
+  document.getElementById("subtitle").innerHTML = '花有重开日&#44;人无再少年'
+  }</script></body></html>

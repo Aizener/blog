@@ -1,0 +1,701 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用uni-app调用Android的权限 | 部落格</title><meta name="description" content="使用uni-app调用Android的权限"><meta name="keywords" content="uni-app"><meta name="author" content="杨祥"><meta name="copyright" content="杨祥"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="使用uni-app调用Android的权限"><meta name="twitter:description" content="使用uni-app调用Android的权限"><meta name="twitter:image" content="https://s3.ax1x.com/2020/12/13/rmYCxx.jpg"><meta property="og:type" content="article"><meta property="og:title" content="使用uni-app调用Android的权限"><meta property="og:url" content="http://yangxiang.xyz:9002/2020/12/13/%E4%BD%BF%E7%94%A8uni-app%E8%B0%83%E7%94%A8Android%E7%9A%84%E6%9D%83%E9%99%90/"><meta property="og:site_name" content="部落格"><meta property="og:description" content="使用uni-app调用Android的权限"><meta property="og:image" content="https://s3.ax1x.com/2020/12/13/rmYCxx.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://yangxiang.xyz:9002/2020/12/13/%E4%BD%BF%E7%94%A8uni-app%E8%B0%83%E7%94%A8Android%E7%9A%84%E6%9D%83%E9%99%90/"><link rel="next" title="uni-app之微信小程序分包" href="http://yangxiang.xyz:9002/2020/12/13/uni-app%E4%B9%8B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E5%8C%85/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: false  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><script>console.log('%cHello, i\' am YangXiang.%cTheme By Butterfly.','background: #000; color: #fff; padding: 10px 20px; border-radius: 10px', 'color:skyblue;background: #000;padding: 10px 20px; border-radius: 10px')</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">16</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">13</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐分享</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 我的观影</span></a></li></ul></div></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://s3.ax1x.com/2020/12/13/rmYCxx.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">部落格</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐分享</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 我的观影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">使用uni-app调用Android的权限</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-12-13 22:11:20"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-12-13</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-12-13 22:24:21"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-12-13</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Web%E5%89%8D%E7%AB%AF/">Web前端</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">plus.android.requestPermissions([<span class="string">'android.permission.RECORD_AUDIO'</span>], e =&gt; &#123;</span><br><span class="line">	    <span class="keyword">if</span>(e.deniedAlways.length &gt; <span class="number">0</span>)&#123;	<span class="comment">//权限被永久拒绝</span></span><br><span class="line">		    <span class="comment">// 弹出提示框解释为何需要权限，引导用户打开设置页面开启</span></span><br><span class="line">		    <span class="built_in">console</span>.log(<span class="string">'Always Denied!!! '</span> + e.deniedAlways.toString())</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span>(e.deniedPresent.length &gt; <span class="number">0</span>)&#123;	<span class="comment">//权限被临时拒绝</span></span><br><span class="line">		    <span class="comment">// 弹出提示框解释为何需要权限，可再次调用plus.android.requestPermissions申请权限</span></span><br><span class="line">		    <span class="built_in">console</span>.log(<span class="string">'Present Denied!!! '</span>+e.deniedPresent.toString())</span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="keyword">if</span>(e.granted.length &gt; <span class="number">0</span>)&#123;	<span class="comment">//权限被允许</span></span><br><span class="line">		    <span class="built_in">console</span>.log(<span class="string">'Granted!!! '</span> + e.granted.toString())</span><br><span class="line">	    &#125;</span><br><span class="line">   &#125;, e =&gt; &#123;</span><br><span class="line">	     <span class="built_in">console</span>.log(<span class="string">'Request Permissions error:'</span> + <span class="built_in">JSON</span>.stringify(e))</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我们使用uni-app做一些操作的时候，有时没对应权限会闪退或重启，例如没有读写操作访问图片时，此时就需要询问权限了。</p>
+<p>使用方法：在需要可能使用权限的地方，这里还是例如图片选择，我们先通过上述代码访问权限：</p>
+<ul>
+<li><p>当<code>e.granted.length &gt; 0</code>的时候，写 上我们的业务代码；</p>
+</li>
+<li><p>当没有权限时，分为两类，一类是永久拒绝了，一个是临时拒绝，永久拒绝的情况直接走<code>e.deniedAlways.length &gt; 0</code>这个操作，在这里做一些提醒就行了，例如：请再手机设置里面允许XX权限；</p>
+</li>
+<li><p>当权限是临时拒绝的话，手机会弹出一个权限访问的界面处理，此时再次点击临时拒绝（不是永久拒绝）的话，就会走<code>e.deniedPresent.length &gt; 0</code>这里面了，此时可以不做操作或给一些善意的提醒。</p>
+</li>
+</ul>
+<p><strong>Android权限列表</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong><em>\</em>权限**</strong></th>
+<th><strong><em>\</em>名称**</strong></th>
+<th><strong><em>\</em>描述**</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>android.permission.ACCESS_CHECKIN_PROPERTIES</td>
+<td>访问登记属性</td>
+<td>读取或写入登记check-in数据库属性表的权限</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_COARSE_LOCATION</td>
+<td>获取错略位置</td>
+<td>通过WiFi或移动基站的方式获取用户错略的经纬度信息,定位精度大概误差在30~1500米</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_FINE_LOCATION</td>
+<td>获取精确位置</td>
+<td>通过GPS芯片接收卫星的定位信息,定位精度达10米以内</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_LOCATION_EXTRA_COMMANDS</td>
+<td>访问定位额外命令</td>
+<td>允许程序访问额外的定位提供者指令</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_MOCK_LOCATION</td>
+<td>获取模拟定位信息</td>
+<td>获取模拟定位信息,一般用于帮助开发者调试应用</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_NETWORK_STATE</td>
+<td>获取网络状态</td>
+<td>获取网络信息状态,如当前的网络连接是否有效</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_SURFACE_FLINGER</td>
+<td>访问Surface Flinger</td>
+<td>Android平台上底层的图形显示支持,一般用于游戏或照相机预览界面和底层模式的屏幕截图</td>
+</tr>
+<tr>
+<td>android.permission.ACCESS_WIFI_STATE</td>
+<td>获取WiFi状态</td>
+<td>获取当前WiFi接入的状态以及WLAN热点的信息</td>
+</tr>
+<tr>
+<td>android.permission.ACCOUNT_MANAGER</td>
+<td>账户管理</td>
+<td>获取账户验证信息,主要为GMail账户信息,只有系统级进程才能访问的权限</td>
+</tr>
+<tr>
+<td>android.permission.AUTHENTICATE_ACCOUNTS</td>
+<td>验证账户</td>
+<td>允许一个程序通过账户验证方式访问账户管理ACCOUNT_MANAGER相关信息</td>
+</tr>
+<tr>
+<td>android.permission.BATTERY_STATS</td>
+<td>电量统计</td>
+<td>获取电池电量统计信息</td>
+</tr>
+<tr>
+<td>android.permission.BIND_APPWIDGET</td>
+<td>绑定小插件</td>
+<td>允许一个程序告诉appWidget服务需要访问小插件的数据库,只有非常少的应用才用到此权限</td>
+</tr>
+<tr>
+<td>android.permission.BIND_DEVICE_ADMIN</td>
+<td>绑定设备管理</td>
+<td>请求系统管理员接收者receiver,只有系统才能使用</td>
+</tr>
+<tr>
+<td>android.permission.BIND_INPUT_METHOD</td>
+<td>绑定输入法</td>
+<td>请求InputMethodService服务,只有系统才能使用</td>
+</tr>
+<tr>
+<td>android.permission.BIND_REMOTEVIEWS</td>
+<td>绑定RemoteView</td>
+<td>必须通过RemoteViewsService服务来请求,只有系统才能用</td>
+</tr>
+<tr>
+<td>android.permission.BIND_WALLPAPER</td>
+<td>绑定壁纸</td>
+<td>必须通过WallpaperService服务来请求,只有系统才能用</td>
+</tr>
+<tr>
+<td>android.permission.BLUETOOTH</td>
+<td>使用蓝牙</td>
+<td>允许程序连接配对过的蓝牙设备</td>
+</tr>
+<tr>
+<td>android.permission.BLUETOOTH_ADMIN</td>
+<td>蓝牙管理</td>
+<td>允许程序进行发现和配对新的蓝牙设备</td>
+</tr>
+<tr>
+<td>android.permission.BRICK</td>
+<td>变成砖头</td>
+<td>能够禁用手机,非常危险,顾名思义就是让手机变成砖头</td>
+</tr>
+<tr>
+<td>android.permission.BROADCAST_PACKAGE_REMOVED</td>
+<td>应用删除时广播</td>
+<td>当一个应用在删除时触发一个广播</td>
+</tr>
+<tr>
+<td>android.permission.BROADCAST_SMS</td>
+<td>收到短信时广播</td>
+<td>当收到短信时触发一个广播</td>
+</tr>
+<tr>
+<td>android.permission.BROADCAST_STICKY</td>
+<td>连续广播</td>
+<td>允许一个程序收到广播后快速收到下一个广播</td>
+</tr>
+<tr>
+<td>android.permission.BROADCAST_WAP_PUSH</td>
+<td>WAP PUSH广播</td>
+<td>WAP PUSH服务收到后触发一个广播</td>
+</tr>
+<tr>
+<td>android.permission.CALL_PHONE</td>
+<td>拨打电话</td>
+<td>允许程序从非系统拨号器里输入电话号码</td>
+</tr>
+<tr>
+<td>android.permission.CALL_PRIVILEGED</td>
+<td>通话权限</td>
+<td>允许程序拨打电话,替换系统的拨号器界面</td>
+</tr>
+<tr>
+<td>android.permission.CAMERA</td>
+<td>拍照权限</td>
+<td>允许访问摄像头进行拍照</td>
+</tr>
+<tr>
+<td>android.permission.CHANGE_COMPONENT_ENABLED_STATE</td>
+<td>改变组件状态</td>
+<td>改变组件是否启用状态</td>
+</tr>
+<tr>
+<td>android.permission.CHANGE_CONFIGURATION</td>
+<td>改变配置</td>
+<td>允许当前应用改变配置,如定位</td>
+</tr>
+<tr>
+<td>android.permission.CHANGE_NETWORK_STATE</td>
+<td>改变网络状态</td>
+<td>改变网络状态如是否能联网</td>
+</tr>
+<tr>
+<td>android.permission.CHANGE_WIFI_MULTICAST_STATE</td>
+<td>改变WiFi多播状态</td>
+<td>改变WiFi多播状态</td>
+</tr>
+<tr>
+<td>android.permission.CHANGE_WIFI_STATE</td>
+<td>改变WiFi状态</td>
+<td>改变WiFi状态</td>
+</tr>
+<tr>
+<td>android.permission.CLEAR_APP_CACHE</td>
+<td>清除应用缓存</td>
+<td>清除应用缓存</td>
+</tr>
+<tr>
+<td>android.permission.CLEAR_APP_USER_DATA</td>
+<td>清除用户数据</td>
+<td>清除应用的用户数据</td>
+</tr>
+<tr>
+<td>android.permission.CWJ_GROUP</td>
+<td>底层访问权限</td>
+<td>允许CWJ账户组访问底层信息</td>
+</tr>
+<tr>
+<td>android.permission.CELL_PHONE_MASTER_EX</td>
+<td>手机优化大师扩展权限</td>
+<td>手机优化大师扩展权限</td>
+</tr>
+<tr>
+<td>android.permission.CONTROL_LOCATION_UPDATES</td>
+<td>控制定位更新</td>
+<td>允许获得移动网络定位信息改变</td>
+</tr>
+<tr>
+<td>android.permission.DELETE_CACHE_FILES</td>
+<td>删除缓存文件</td>
+<td>允许应用删除缓存文件</td>
+</tr>
+<tr>
+<td>android.permission.DELETE_PACKAGES</td>
+<td>删除应用</td>
+<td>允许程序删除应用</td>
+</tr>
+<tr>
+<td>android.permission.DEVICE_POWER</td>
+<td>电源管理</td>
+<td>允许访问底层电源管理</td>
+</tr>
+<tr>
+<td>android.permission.DIAGNOSTIC</td>
+<td>应用诊断</td>
+<td>允许程序到RW到诊断资源</td>
+</tr>
+<tr>
+<td>android.permission.DISABLE_KEYGUARD</td>
+<td>禁用键盘锁</td>
+<td>允许程序禁用键盘锁</td>
+</tr>
+<tr>
+<td>android.permission.DUMP</td>
+<td>转存系统信息</td>
+<td>允许程序获取系统dump信息从系统服务</td>
+</tr>
+<tr>
+<td>android.permission.EXPAND_STATUS_BAR</td>
+<td>状态栏控制</td>
+<td>允许程序扩展或收缩状态栏</td>
+</tr>
+<tr>
+<td>android.permission.FACTORY_TEST</td>
+<td>工厂测试模式</td>
+<td>允许程序运行工厂测试模式</td>
+</tr>
+<tr>
+<td>android.permission.FLASHLIGHT</td>
+<td>使用闪光灯</td>
+<td>允许访问闪光灯</td>
+</tr>
+<tr>
+<td>android.permission.FORCE_BACK</td>
+<td>强制后退</td>
+<td>允许程序强制使用back后退按键,无论Activity是否在顶层</td>
+</tr>
+<tr>
+<td>android.permission.GET_ACCOUNTS</td>
+<td>访问账户Gmail列表</td>
+<td>访问GMail账户列表</td>
+</tr>
+<tr>
+<td>android.permission.GET_PACKAGE_SIZE</td>
+<td>获取应用大小</td>
+<td>获取应用的文件大小</td>
+</tr>
+<tr>
+<td>android.permission.GET_TASKS</td>
+<td>获取任务信息</td>
+<td>允许程序获取当前或最近运行的应用</td>
+</tr>
+<tr>
+<td>android.permission.GLOBAL_SEARCH</td>
+<td>允许全局搜索</td>
+<td>允许程序使用全局搜索功能</td>
+</tr>
+<tr>
+<td>android.permission.HARDWARE_TEST</td>
+<td>硬件测试</td>
+<td>访问硬件辅助设备,用于硬件测试</td>
+</tr>
+<tr>
+<td>android.permission.INJECT_EVENTS</td>
+<td>注射事件</td>
+<td>允许访问本程序的底层事件,获取按键、轨迹球的事件流</td>
+</tr>
+<tr>
+<td>android.permission.INSTALL_LOCATION_PROVIDER</td>
+<td>安装定位提供</td>
+<td>安装定位提供</td>
+</tr>
+<tr>
+<td>android.permission.INSTALL_PACKAGES</td>
+<td>安装应用程序</td>
+<td>允许程序安装应用</td>
+</tr>
+<tr>
+<td>android.permission.INTERNAL_SYSTEM_WINDOW</td>
+<td>内部系统窗口</td>
+<td>允许程序打开内部窗口,不对第三方应用程序开放此权限</td>
+</tr>
+<tr>
+<td>android.permission.INTERNET</td>
+<td>访问网络</td>
+<td>访问网络连接,可能产生GPRS流量</td>
+</tr>
+<tr>
+<td>android.permission.KILL_BACKGROUND_PROCESSES</td>
+<td>结束后台进程</td>
+<td>允许程序调用killBackgroundProcesses(String).方法结束后台进程</td>
+</tr>
+<tr>
+<td>android.permission.MANAGE_ACCOUNTS</td>
+<td>管理账户</td>
+<td>允许程序管理AccountManager中的账户列表</td>
+</tr>
+<tr>
+<td>android.permission.MANAGE_APP_TOKENS</td>
+<td>管理程序引用</td>
+<td>管理创建、摧毁、Z轴顺序,仅用于系统</td>
+</tr>
+<tr>
+<td>android.permission.MTWEAK_USER</td>
+<td>高级权限</td>
+<td>允许mTweak用户访问高级系统权限</td>
+</tr>
+<tr>
+<td>android.permission.MTWEAK_FORUM</td>
+<td>社区权限</td>
+<td>允许使用mTweak社区权限</td>
+</tr>
+<tr>
+<td>android.permission.MASTER_CLEAR</td>
+<td>软格式化</td>
+<td>允许程序执行软格式化,删除系统配置信息</td>
+</tr>
+<tr>
+<td>android.permission.MODIFY_AUDIO_SETTINGS</td>
+<td>修改声音设置</td>
+<td>修改声音设置信息</td>
+</tr>
+<tr>
+<td>android.permission.MODIFY_PHONE_STATE</td>
+<td>修改电话状态</td>
+<td>修改电话状态,如飞行模式,但不包含替换系统拨号器界面</td>
+</tr>
+<tr>
+<td>android.permission.MOUNT_FORMAT_FILESYSTEMS</td>
+<td>格式化文件系统</td>
+<td>格式化可移动文件系统,比如格式化清空SD卡</td>
+</tr>
+<tr>
+<td>android.permission.MOUNT_UNMOUNT_FILESYSTEMS</td>
+<td>挂载文件系统</td>
+<td>挂载、反挂载外部文件系统</td>
+</tr>
+<tr>
+<td>android.permission.NFC</td>
+<td>允许NFC通讯</td>
+<td>允许程序执行NFC近距离通讯操作,用于移动支持</td>
+</tr>
+<tr>
+<td>android.permission.PERSISTENT_ACTIVITY</td>
+<td>永久Activity</td>
+<td>创建一个永久的Activity,该功能标记为将来将被移除</td>
+</tr>
+<tr>
+<td>android.permission.PROCESS_OUTGOING_CALLS</td>
+<td>处理拨出电话</td>
+<td>允许程序监视,修改或放弃播出电话</td>
+</tr>
+<tr>
+<td>android.permission.READ_CALENDAR</td>
+<td>读取日程提醒</td>
+<td>允许程序读取用户的日程信息</td>
+</tr>
+<tr>
+<td>android.permission.READ_CONTACTS</td>
+<td>读取联系人</td>
+<td>允许应用访问联系人通讯录信息</td>
+</tr>
+<tr>
+<td>android.permission.READ_FRAME_BUFFER</td>
+<td>屏幕截图</td>
+<td>读取帧缓存用于屏幕截图</td>
+</tr>
+<tr>
+<td>com.android.browser.permission.READ_HISTORY_BOOKMARKS</td>
+<td>读取收藏夹和历史记录</td>
+<td>读取浏览器收藏夹和历史记录</td>
+</tr>
+<tr>
+<td>android.permission.READ_INPUT_STATE</td>
+<td>读取输入状态</td>
+<td>读取当前键的输入状态,仅用于系统</td>
+</tr>
+<tr>
+<td>android.permission.READ_LOGS</td>
+<td>读取系统日志</td>
+<td>读取系统底层日志</td>
+</tr>
+<tr>
+<td>android.permission.READ_PHONE_STATE</td>
+<td>读取电话状态</td>
+<td>访问电话状态</td>
+</tr>
+<tr>
+<td>android.permission.READ_SMS</td>
+<td>读取短信内容</td>
+<td>读取短信内容</td>
+</tr>
+<tr>
+<td>android.permission.READ_SYNC_SETTINGS</td>
+<td>读取同步设置</td>
+<td>读取同步设置,读取Google在线同步设置</td>
+</tr>
+<tr>
+<td>android.permission.READ_SYNC_STATS</td>
+<td>读取同步状态</td>
+<td>读取同步状态,获得Google在线同步状态</td>
+</tr>
+<tr>
+<td>android.permission.REBOOT</td>
+<td>重启设备</td>
+<td>允许程序重新启动设备</td>
+</tr>
+<tr>
+<td>android.permission.RECEIVE_BOOT_COMPLETED</td>
+<td>开机自动允许</td>
+<td>允许程序开机自动运行</td>
+</tr>
+<tr>
+<td>android.permission.RECEIVE_MMS</td>
+<td>接收彩信</td>
+<td>接收彩信</td>
+</tr>
+<tr>
+<td>android.permission.RECEIVE_SMS</td>
+<td>接收短信</td>
+<td>接收短信</td>
+</tr>
+<tr>
+<td>android.permission.RECEIVE_WAP_PUSH</td>
+<td>接收Wap Push</td>
+<td>接收WAP PUSH信息</td>
+</tr>
+<tr>
+<td>android.permission.RECORD_AUDIO</td>
+<td>录音</td>
+<td>录制声音通过手机或耳机的麦克</td>
+</tr>
+<tr>
+<td>android.permission.REORDER_TASKS</td>
+<td>排序系统任务</td>
+<td>重新排序系统Z轴运行中的任务</td>
+</tr>
+<tr>
+<td>android.permission.RESTART_PACKAGES</td>
+<td>结束系统任务</td>
+<td>结束任务通过restartPackage(String)方法,该方式将在外来放弃</td>
+</tr>
+<tr>
+<td>android.permission.SEND_SMS</td>
+<td>发送短信</td>
+<td>发送短信</td>
+</tr>
+<tr>
+<td>android.permission.SET_ACTIVITY_WATCHER</td>
+<td>设置Activity观察其</td>
+<td>设置Activity观察器一般用于monkey测试</td>
+</tr>
+<tr>
+<td>com.android.alarm.permission.SET_ALARM</td>
+<td>设置闹铃提醒</td>
+<td>设置闹铃提醒</td>
+</tr>
+<tr>
+<td>android.permission.SET_ALWAYS_FINISH</td>
+<td>设置总是退出</td>
+<td>设置程序在后台是否总是退出</td>
+</tr>
+<tr>
+<td>android.permission.SET_ANIMATION_SCALE</td>
+<td>设置动画缩放</td>
+<td>设置全局动画缩放</td>
+</tr>
+<tr>
+<td>android.permission.SET_DEBUG_APP</td>
+<td>设置调试程序</td>
+<td>设置调试程序,一般用于开发</td>
+</tr>
+<tr>
+<td>android.permission.SET_ORIENTATION</td>
+<td>设置屏幕方向</td>
+<td>设置屏幕方向为横屏或标准方式显示,不用于普通应用</td>
+</tr>
+<tr>
+<td>android.permission.SET_PREFERRED_APPLICATIONS</td>
+<td>设置应用参数</td>
+<td>设置应用的参数,已不再工作具体查看addPackageToPreferred(String)介绍</td>
+</tr>
+<tr>
+<td>android.permission.SET_PROCESS_LIMIT</td>
+<td>设置进程限制</td>
+<td>允许程序设置最大的进程数量的限制</td>
+</tr>
+<tr>
+<td>android.permission.SET_TIME</td>
+<td>设置系统时间</td>
+<td>设置系统时间</td>
+</tr>
+<tr>
+<td>android.permission.SET_TIME_ZONE</td>
+<td>设置系统时区</td>
+<td>设置系统时区</td>
+</tr>
+<tr>
+<td>android.permission.SET_WALLPAPER</td>
+<td>设置桌面壁纸</td>
+<td>设置桌面壁纸</td>
+</tr>
+<tr>
+<td>android.permission.SET_WALLPAPER_HINTS</td>
+<td>设置壁纸建议</td>
+<td>设置壁纸建议</td>
+</tr>
+<tr>
+<td>android.permission.SIGNAL_PERSISTENT_PROCESSES</td>
+<td>发送永久进程信号</td>
+<td>发送一个永久的进程信号</td>
+</tr>
+<tr>
+<td>android.permission.STATUS_BAR</td>
+<td>状态栏控制</td>
+<td>允许程序打开、关闭、禁用状态栏</td>
+</tr>
+<tr>
+<td>android.permission.SUBSCRIBED_FEEDS_READ</td>
+<td>访问订阅内容</td>
+<td>访问订阅信息的数据库</td>
+</tr>
+<tr>
+<td>android.permission.SUBSCRIBED_FEEDS_WRITE</td>
+<td>写入订阅内容</td>
+<td>写入或修改订阅内容的数据库</td>
+</tr>
+<tr>
+<td>android.permission.SYSTEM_ALERT_WINDOW</td>
+<td>显示系统窗口</td>
+<td>显示系统窗口</td>
+</tr>
+<tr>
+<td>android.permission.UPDATE_DEVICE_STATS</td>
+<td>更新设备状态</td>
+<td>更新设备状态</td>
+</tr>
+<tr>
+<td>android.permission.USE_CREDENTIALS</td>
+<td>使用证书</td>
+<td>允许程序请求验证从AccountManager</td>
+</tr>
+<tr>
+<td>android.permission.USE_SIP</td>
+<td>使用SIP视频</td>
+<td>允许程序使用SIP视频服务</td>
+</tr>
+<tr>
+<td>android.permission.VIBRATE</td>
+<td>使用振动</td>
+<td>允许振动</td>
+</tr>
+<tr>
+<td>android.permission.WAKE_LOCK</td>
+<td>唤醒锁定</td>
+<td>允许程序在手机屏幕关闭后后台进程仍然运行</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_APN_SETTINGS</td>
+<td>写入GPRS接入点设置</td>
+<td>写入网络GPRS接入点设置</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_CALENDAR</td>
+<td>写入日程提醒</td>
+<td>写入日程,但不可读取</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_CONTACTS</td>
+<td>写**系人</td>
+<td>写**系人,但不可读取</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_EXTERNAL_STORAGE</td>
+<td>写入外部存储</td>
+<td>允许程序写入外部存储,如SD卡上写文件</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_GSERVICES</td>
+<td>写入Google地图数据</td>
+<td>允许程序写入Google Map服务数据</td>
+</tr>
+<tr>
+<td>com.android.browser.permission.WRITE_HISTORY_BOOKMARKS</td>
+<td>写入收藏夹和历史记录</td>
+<td>写入浏览器历史记录或收藏夹,但不可读取</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_SECURE_SETTINGS</td>
+<td>读写系统敏感设置</td>
+<td>允许程序读写系统安全敏感的设置项</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_SETTINGS</td>
+<td>读写系统设置</td>
+<td>允许读写系统设置项</td>
+</tr>
+<tr>
+<td>android.permission.WRITE_SMS</td>
+<td>编写短信</td>
+<td>允许编写短信</td>
+</tr>
+</tbody></table>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">杨祥</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yangxiang.xyz:9002/2020/12/13/%E4%BD%BF%E7%94%A8uni-app%E8%B0%83%E7%94%A8Android%E7%9A%84%E6%9D%83%E9%99%90/">http://yangxiang.xyz:9002/2020/12/13/使用uni-app调用Android的权限/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yangxiang.xyz:9002" target="_blank">部落格</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/uni-app/">uni-app</a></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2020/12/13/rmYCxx.jpg" data-sites="wechat,weibo,qq, facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/12/13/uni-app%E4%B9%8B%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E5%8C%85/"><img class="next_cover lazyload" data-src="https://s3.ax1x.com/2020/12/13/reLcd0.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">uni-app之微信小程序分包</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/12/13/uni-app之微信小程序分包/" title="uni-app之微信小程序分包"><img class="relatedPosts_cover lazyload"data-src="https://s3.ax1x.com/2020/12/13/reLcd0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-12-13</div><div class="relatedPosts_title">uni-app之微信小程序分包</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/uni-app在小程序里获取地理位置/" title="uni-app在小程序里获取地理位置"><img class="relatedPosts_cover lazyload"data-src="https://cdn.jsdelivr.net/gh/aizener/my-imgs@master/blog/uni-app.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-history fa-fw" aria-hidden="true"></i> 2020-11-29</div><div class="relatedPosts_title">uni-app在小程序里获取地理位置</div></div></a></div></div><div class="clear_both"></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 杨祥</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
